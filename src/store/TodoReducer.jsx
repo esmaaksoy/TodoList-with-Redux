@@ -1,5 +1,5 @@
 const initialState = {
-  todoList: [],
+  todoList: JSON.parse(localStorage.getItem("list")) || [],
 };
 export const ADD = "ADD";
 export const DEL = "DEL";
@@ -11,8 +11,7 @@ export const clearTodo = () => ({ type: CLR });
 export const deleteTodo = (payload) => ({ type: DEL, payload });
 export const toggleTodo = (payload) => ({ type: TGL, payload });
 export const editTodo = ({id, text}) =>(
-    {type: EDT, payload:{id:id, text:text}}
-    
+    {type: EDT, payload:{id:id, text:text}}   
     )
 export const todoReducer = (state = initialState, action) => {
   switch (action.type) {

@@ -5,7 +5,7 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import AddIcon from "@mui/icons-material/Add";
 import Fab from "@mui/material/Fab";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addTodo, clearTodo, editTodo } from "./store/TodoReducer";
 const Todo = () => {
@@ -30,6 +30,9 @@ const Todo = () => {
     setEditingId(id);
     setText(newText);
   };
+  useEffect(() => {
+    localStorage.setItem('list', JSON.stringify(todoList));
+  }, [todoList]);
   return (
     <Stack
       direction="column"
