@@ -8,16 +8,30 @@ import AddIcon from "@mui/icons-material/Add";
 import Fab from "@mui/material/Fab";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addTodo,clearTodo } from "./store/TodoReducer";
+import { addTodo,clearTodo, editTodo } from "./store/TodoReducer";
 const Todo = () => {
   const [text, setText] = useState("");
+  const [isEditing, setIsEditing] = useState(false)
+  const [editingId, setEditingId] = useState("");
   const dispatch = useDispatch();
   const todoList = useSelector((state)=>state.todoList)
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addTodo(text));
+    if (isEditing && editingId){
+      dispatch(editTodo({ id: editingId, text }));
+      setEditingId(null);
+    }else{
+      dispatch(addTodo(text));
+    }
     setText("");
+    setIsEditing(false);
   };
+  const handleEdit =(id, newText)=>{
+setIsEditing(true)
+setEditingId(id)
+setText(newText)
+
+  }
   return (
     <Stack
       direction="column"
@@ -41,7 +55,6 @@ const Todo = () => {
       >
         <AddIcon sx={{color:"white"}}/>
       </Fab>
-      
       <Typography variant="h3" component="h6" color={"#A5A697"} width={"100%"}>
         Todo List with Redux
       </Typography>
@@ -49,20 +62,19 @@ const Todo = () => {
         <form onSubmit={handleSubmit} style={{width:"100%"}}>
           <TextField
             id="outlined-basic"
-            label="Add New Task"
+            label={isEditing ? "Edit task" :"Add New Task" }
             variant="outlined"
             value={text}
             onChange={(e) => setText(e.target.value)}
             sx={{width:"80%"}}
           />
           <Button variant="contained" type="submit" sx={{width:"20%",height:"100%", color:"white"}}>
-            Add
+          {isEditing ? "edit" : "Add"} 
           </Button>
         </form>
       </Stack>
-
       <Stack sx={{width:"100%"}} spacing={2}>
-        {todoList.map((item)=> <TodoItem key={item.id} {...item}/>)}
+        {todoList.map((item)=> <TodoItem key={item.id} {...item} handleEdit={handleEdit}/>)}
       </Stack>
       <Button variant="contained" onClick={()=>dispatch(clearTodo())} sx={{width:"100%", color:"white"}}>Clear all</Button>
      

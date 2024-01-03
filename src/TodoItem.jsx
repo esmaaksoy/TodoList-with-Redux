@@ -3,9 +3,10 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import EditRoundedIcon from "@mui/icons-material/EditRounded";
 import CheckRoundedIcon from "@mui/icons-material/CheckRounded";
 import { useDispatch } from "react-redux";
-import { deleteTodo, toggleTodo } from "./store/TodoReducer";
-const TodoItem = ({ id, text, completed }) => {
+import { deleteTodo, editTodo, toggleTodo } from "./store/TodoReducer";
+const TodoItem = ({ id, text, completed,handleEdit }) => {
   const dispatch = useDispatch();
+
   return (
     <Stack
       direction="row"
@@ -24,7 +25,7 @@ const TodoItem = ({ id, text, completed }) => {
         </Typography>
       </Stack>
       <Stack direction={"row"}>
-        <EditRoundedIcon sx={{ cursor: "pointer", color: "#A5A697" }} />
+        <EditRoundedIcon sx={{ cursor: "pointer", color: "#A5A697" }} onClick={()=>handleEdit(id,text)} />
         <DeleteIcon
           sx={{ cursor: "pointer", color: "#A5A697" }}
           onClick={() => dispatch(deleteTodo(id))}
