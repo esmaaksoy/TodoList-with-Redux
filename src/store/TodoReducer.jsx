@@ -29,7 +29,7 @@ export const todoReducer = (state = initialState, action) => {
     case DEL:
         return { todoList: state.todoList.filter((item) => item.id !== action.payload) };
     case CLR:
-        return initialState;
+        return { todoList: [] };
     case TGL:
         return { 
             todoList: state.todoList.map((item) =>
