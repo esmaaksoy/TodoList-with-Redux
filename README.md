@@ -1,9 +1,9 @@
-# Todo with Redux
+# Todo List with Redux
 This project is a website created using React, Redux, and Material-UI. It includes a simple "Todo List" application where users can add, edit, mark tasks as completed, and delete them.
 ## Screenshots
 ![Project snapshot](./todo.gif) 
 
-[Todo with Redux Live Page](https://todo-redux-esma.netlify.app/)
+[Todo List with Redux Live Page](https://todo-redux-esma.netlify.app/)
 
 ## Tech/framework used
 <b>Built with</b> <br>
