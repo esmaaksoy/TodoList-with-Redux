@@ -8,7 +8,7 @@ This project is a website created using React, Redux, and Material-UI. It includ
 ## Tech/framework used
 <b>Built with</b> <br>
 <a href="#"><img src="https://w7.pngwing.com/pngs/403/269/png-transparent-react-react-native-logos-brands-in-colors-icon-thumbnail.png" alt="react" width="40"/></a> 
-<a href="https://mui.com/" target="_blank"> <img src="https://user-images.githubusercontent.com/25181517/190887639-d0ba4ec9-ddbe-45dd-bea1-4db83846503e.png" alt="materialUI" height="40"/></a> 
+<a href="https://mui.com/" target="_blank"> <img src="https://mui.com/static/logo.png" alt="materialUI" height="40"/></a> 
 <a href="https://redux.js.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/redux/redux-original.svg" alt="redux" width="40" height="40"/></a> 
 
 ## How to use?
